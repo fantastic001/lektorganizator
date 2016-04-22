@@ -137,8 +137,8 @@ echo  $stanje .
 //###izvan svih funkcija
 
 
-$username = "aleksa";
-$password = "librelektor20";
+$username = "";
+$password = "";
 $context = stream_context_create(array (
     'http' => array (
         'header' => 'Authorization: Basic ' . base64_encode("$username:$password")
