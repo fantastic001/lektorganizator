@@ -1,0 +1,3 @@
+lektorganizator/db.sqlite3
+lektorganizator/app/__pycache__/*.pyc
+lektorganizator/lektorganizator/__pycache__/*.pyc

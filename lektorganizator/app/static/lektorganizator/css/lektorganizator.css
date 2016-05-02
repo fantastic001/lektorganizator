@@ -1,0 +1,12 @@
+
+.content table td 
+{
+	padding: 5px;
+	border: solid 2px;
+	width: 20%;
+}
+
+.content table 
+{
+	border: solid 2px;
+}

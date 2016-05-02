@@ -1,0 +1,20 @@
+{% extends "lektorganizator/base.html" %}
+
+{% block content%}
+
+<div class="row">
+	<table>
+		<tr>
+			<td>Ime i prezime</td>
+			<td>Email</td>
+		</tr>
+		<tr>
+			{%for lecturer in lecturers%} 
+				<td>{{ lecturer.first_name }} {{ lecturer.last_name }}</td>
+				<td>{{ lecturer.email }} </td>
+			{% endfor %}
+		</tr>
+	</table>
+
+</div>
+{% endblock %}
