@@ -2,7 +2,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
-from .models import Lecturer, Article 
+from .models import *
 
 from django.http import HttpResponseRedirect
 
@@ -46,6 +46,11 @@ def user_logout(request):
 def lecturer_list(request):
     lecturers = Lecturer.objects.all()
     return render(request, "lektorganizator/lecturer_list.html", {"lecturers": lecturers})
+
+@login_required
+def source_list(request):
+    sources = Source.objects.all()
+    return render(request, "lektorganizator/source_list.html", {"sources": sources})
 
 @login_required
 def article_list(request):

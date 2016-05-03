@@ -18,3 +18,11 @@ class Article(models.Model):
 
     def __str__(self):
         return self.slug
+
+class Source(models.Model):
+    slug = models.CharField(max_length=60) 
+    title = models.CharField(max_length=60)
+    description = models.CharField(max_length=120)
+
+    def __str__(self):
+        return self.title

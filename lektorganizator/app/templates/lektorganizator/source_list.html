@@ -1,0 +1,29 @@
+
+
+
+{% extends "lektorganizator/base.html"%}
+
+
+{% block content %}
+
+<div class="row">
+
+	<table>
+		<tr>
+			<th>Naziv izvora</th>
+			<th>Opis</th>
+			<th>Import</th>
+		</tr>
+		{% for source in sources %}
+			<tr>
+				<td>{{ source.title }}</td>
+				<td>{{ source.description}}</td>
+				<td><a href="{% url "article-import-suggestions" source.slug %}">Import</a>
+			</tr>
+		{% endfor %}
+	</table>
+
+</div>
+
+
+{% endblock %}

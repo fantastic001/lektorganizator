@@ -4,9 +4,11 @@ from django.contrib import admin
 
 from .models import (
     Article,
-    Lecturer
+    Lecturer,
+    Source,
 )
 
 
 admin.site.register(Article)
 admin.site.register(Lecturer)
+admin.site.register(Source)
