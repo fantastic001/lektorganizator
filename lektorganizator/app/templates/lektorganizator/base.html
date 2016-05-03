@@ -16,6 +16,11 @@
 			<li><a href="{% url "article-list" %}">Lista aktivnih članaka</a></li>
 			<li><a href="{% url "article-archive" %}">Arhiva</a></li>
 			<li><a href="{% url "article-import-suggestions" "wiki:prikupljeni_clanci" %}">Dodaj sa wiki-a</a></li>
+			{% if not user or not user.is_authenticated %}
+				<li><a href="{% url "login"%}">Uloguj se</a></li>
+			{% else %}
+				<li><a href="{% url "logout" %}">Odjavi se</a></li>
+			{% endif %}
 		</ul>
 	</nav>
         <div class="page-header">

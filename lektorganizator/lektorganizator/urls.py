@@ -21,6 +21,8 @@ from app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r"^$", views.index, name="index"),
+    url(r"^accounts/login/", views.user_login, name="login"),
+    url(r"^accounts/logout/", views.user_logout, name="logout"),
     url(r"^lecturers/$", views.lecturer_list, name="lecturer-list"),
     url(r"^articles/$", views.article_list, name="article-list"),
     url(r"^articles/action/archive_all/$", views.archive_all, name="archive-all"),
