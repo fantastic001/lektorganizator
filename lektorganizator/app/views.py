@@ -9,6 +9,8 @@ from django.http import HttpResponseRedirect
 from lektorganizator import wiki
 from .libre import LibreManager 
 
+from django.core.mail import send_mail
+
 def index(request):
     return render(request, "lektorganizator/index.html")
 
@@ -53,8 +55,11 @@ def article_import(request, slug):
     return HttpResponseRedirect(reverse('article-list'))
 
 def notify_lecturer(request, slug):
-    # TODO
-    pass
+    article = Article.objects.get(slug=slug) 
+    send_mail('Hello', 'Here is the message.', 'stefan@lugons.org',['stefan@lugons.org'], fail_silently=False)
+    article.notified = True
+    article.save()
+    return HttpResponseRedirect(reverse('article-list'))
 
 def attach_lecturer_suggestions(request, slug):
     lecturers = Lecturer.objects.all()

@@ -12,12 +12,20 @@
 			<th>Jedinstveni identifikacioni naziv članka</th>
 			<th>Lektor</th>
 			<th>Dodeli lektora</th>
+			<th>Obaveštenje</th>
 		</tr>
 		{% for article in articles %}
 			<tr>
 				<td>{{ article.slug }}</td>
 				<td>{{ article.lecturer.first_name }} {{ article.lecturer.last_name }}
 				<td><a href="{% url "attach-lecturer-suggestions" article.slug %}">Dodeli</a>
+				<td>
+					{% if article.notified %}  
+						Obavešten(a)
+					{% else %}
+						<a href="{% url "notify-lecturer" article.slug %}">Obavesti lektora</a>
+					{% endif %}
+				</td>
 			</tr>
 		{% endfor %}
 	</table>

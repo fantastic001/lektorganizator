@@ -122,3 +122,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = '/static/'
 
 from lektorganizator.wiki import * 
+from lektorganizator.email_settings import * 
