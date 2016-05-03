@@ -15,7 +15,7 @@ from .forms import *
 
 from lektorganizator import email_settings
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 def index(request):
