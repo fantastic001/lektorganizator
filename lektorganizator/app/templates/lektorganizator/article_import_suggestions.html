@@ -1,0 +1,30 @@
+{% extends "lektorganizator/base.html" %}
+
+{% block content %}
+
+<div class="row"> 
+
+<h1>Import from {{ source }}</h1>
+</div>
+
+<div class="row">
+
+	<table>
+		<tr>
+			<th>Identifikacioni string</th>
+			<th>Naslov</th>
+			<th>Dodaj</th>
+		</tr>
+
+		{% for suggestion in suggestions %} 
+			<tr>
+				<td>{{ suggestion.slug }}</td>
+				<td>{{ suggestion.getTitle() }}</td>
+				<td><a href="{% url "article-import" suggestion.slug %}">Dodaj</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+
+</div>
+
+{% endblock %}

@@ -121,7 +121,4 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = '/static/'
 
-
-DOKUWIKI_USERNAME = ""
-DOKUWIKI_PASSWORD = ""
-DOKUWIKI_URL = "https://libre.lugons.org/wiki"
+from lektorganizator.wiki import * 

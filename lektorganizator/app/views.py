@@ -45,7 +45,7 @@ def article_import_suggestions(request, source):
         if not Article.objects.filter(slug=candidate.slug).exists():
             if candidate.getTitle() != "":
                 suggestions.append(candidate)
-    return render(request, "lektorganizator/article_import_suggestions.html", {"suggestions": suggestions})
+    return render(request, "lektorganizator/article_import_suggestions.html", {"suggestions": suggestions, "source": source})
 
 def article_import(request, slug):
     article = Article.objects.create(slug=slug)

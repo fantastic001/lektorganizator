@@ -1,0 +1,25 @@
+
+{% extends "lektorganizator/base.html"%}
+
+
+{% block content %}
+
+<div class="row">
+
+	<table>
+		<tr>
+			<th>Jedinstveni identifikacioni naziv članka</th>
+			<th>Lektor</th>
+		</tr>
+		{% for article in articles %}
+			<tr>
+				<td>{{ article.slug }}</td>
+				<td>{{ article.lecturer.first_name }} {{ article.lecturer.last_name }}
+			</tr>
+		{% endfor %}
+	</table>
+
+</div>
+
+
+{%% endblock }

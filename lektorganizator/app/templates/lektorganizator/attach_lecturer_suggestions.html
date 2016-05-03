@@ -1,0 +1,31 @@
+
+{% extends "lektorganizator/base.html" %}
+
+{% block content %}
+
+<div class="row"> 
+
+<h1>Dodela lektora za članak {{slug}}</h1>
+</div>
+
+<div class="row">
+
+	<table>
+		<tr>
+			<th>Ime i prezime</th>
+			<th>Elektronska pošta</th>
+			<th>Dodaj</th>
+		</tr>
+
+		{% for lecturer in lecturers %} 
+			<tr>
+				<td>{{ lecturer.first_name }} {{ lecturer.last_name }}</td>
+				<td>{{ lecturer.email }}</td>
+				<td><a href="{% url "attach-lecturer" slug lecturer.pk %}">Dodaj</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+
+</div>
+
+{% endblock %}
