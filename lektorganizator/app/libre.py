@@ -95,8 +95,10 @@ class LibreManager(object):
                 """
                 # try without namespace
                 l = LibreText(self.remote.page(page))
+                l.url = "https://libre.lugons.org/wiki/doku.php?id=" + page
                 if l.getTitle() == "":
                         l = LibreText(self.remote.page("wiki:" + page)) # try with namespace 
+                        l.url = "https://libre.lugons.org/wiki/doku.php?id=wiki:" + page
                 return l
         
         def getAllLinked(self, source): 

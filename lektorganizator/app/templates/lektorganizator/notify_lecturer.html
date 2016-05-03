@@ -1,0 +1,16 @@
+
+{% extends "lektorganizator/base.html" %}
+
+{% block content%}
+
+<div class="row">
+
+	<form method="post"> 
+		{% csrf_token %}
+		{{ form.as_table }}
+		<input type="submit" value="Pošalji"></input>
+
+	</form>
+
+</div>
+{% endblock %}

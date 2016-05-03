@@ -11,6 +11,8 @@ from .libre import LibreManager
 
 from django.core.mail import send_mail
 
+from .forms import ContactForm
+
 def index(request):
     return render(request, "lektorganizator/index.html")
 
@@ -56,10 +58,38 @@ def article_import(request, slug):
 
 def notify_lecturer(request, slug):
     article = Article.objects.get(slug=slug) 
-    send_mail('Hello', 'Here is the message.', 'stefan@lugons.org',['stefan@lugons.org'], fail_silently=False)
-    article.notified = True
-    article.save()
-    return HttpResponseRedirect(reverse('article-list'))
+    manager = LibreManager(wiki.DOKUWIKI_USERNAME, wiki.DOKUWIKI_PASSWORD)
+    text = manager.getPage(article.slug)
+    if request.method == "GET":
+        form = ContactForm({
+            "subject": "Lektorisanje",
+            "message": """
+Pozdrav!
+
+Za ovaj broj tekst za lektorisanje je %s na %s
+
+Rok: 
+
+Molim te javi mi ako ti rok ne odgovara.
+            """ % (text.getTitle(), text.url),
+            "to": article.lecturer.email,
+            "reply": "libre@lugons.org"
+        })
+        return render(request, "lektorganizator/notify_lecturer.html", {"form": form, "slug": slug})
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            send_mail(
+                form.cleaned_data["subject"], 
+                form.cleaned_data["message"], 
+                form.cleaned_data["reply"],
+                [form.cleaned_data["to"]], 
+                fail_silently=False)
+            article.notified = True
+            article.save()
+            return HttpResponseRedirect(reverse('article-list'))
+        else:
+            return render(request, "lektorganizator/notify_lecturer.html", {"form": form, "slug": slug})
 
 def attach_lecturer_suggestions(request, slug):
     lecturers = Lecturer.objects.all()
