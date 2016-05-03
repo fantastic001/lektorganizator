@@ -110,7 +110,7 @@ class LibreManager(object):
                                 #print link["page"]
                                 print("getting page " + link["page"])
                                 libretext = self.getPage(link["page"])
-                                if libretext.getStatus() in ["LEKTORISAN", "PRIHVACEN", "PROVEREN"]:
+                                if libretext.getStatusString() in ["LEKTORISAN", "PRIHVACEN", "PROVEREN"]:
                                         libretext.slug = link["page"]
                                         res.append(libretext)
                 return res

@@ -19,7 +19,7 @@
 		{% for suggestion in suggestions %} 
 			<tr>
 				<td>{{ suggestion.slug }}</td>
-				<td>{{ suggestion.getTitle() }}</td>
+				<td>{{ suggestion.getTitle }}</td>
 				<td><a href="{% url "article-import" suggestion.slug %}">Dodaj</a></td>
 			</tr>
 		{% endfor %}

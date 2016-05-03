@@ -1,12 +1,12 @@
 
 from django.http import Http404
 from django.shortcuts import render
-
+from django.core.urlresolvers import reverse
 from .models import Lecturer, Article 
 
 from django.http import HttpResponseRedirect
 
-import lektorganizator.settings
+from lektorganizator import wiki
 from .libre import LibreManager 
 
 def index(request):
@@ -39,7 +39,7 @@ def article_archive(request):
 
 def article_import_suggestions(request, source):
     suggestions = [] 
-    manager = LibreManager(settings.DOKUWIKI_USERNAME, settings.DOKUWIKI_PASSWORD)
+    manager = LibreManager(wiki.DOKUWIKI_USERNAME, wiki.DOKUWIKI_PASSWORD)
     candidates = manager.getAllLinked(source) 
     for candidate in candidates:
         if not Article.objects.filter(slug=candidate.slug).exists():

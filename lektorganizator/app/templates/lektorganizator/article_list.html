@@ -17,7 +17,7 @@
 			<tr>
 				<td>{{ article.slug }}</td>
 				<td>{{ article.lecturer.first_name }} {{ article.lecturer.last_name }}
-				<td><a href={% url "attach-lecturer-suggestions" article.slug %}>Dodeli</a>
+				<td><a href="{% url "attach-lecturer-suggestions" article.slug %}">Dodeli</a>
 			</tr>
 		{% endfor %}
 	</table>
@@ -25,4 +25,4 @@
 </div>
 
 
-{%% endblock }
+{% endblock %}
