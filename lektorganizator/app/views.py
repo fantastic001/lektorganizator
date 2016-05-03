@@ -13,6 +13,8 @@ from django.core.mail import send_mail
 
 from .forms import ContactForm
 
+from lektorganizator import email_settings
+
 def index(request):
     return render(request, "lektorganizator/index.html")
 
@@ -73,7 +75,7 @@ Rok:
 Molim te javi mi ako ti rok ne odgovara.
             """ % (text.getTitle(), text.url),
             "to": article.lecturer.email,
-            "reply": "libre@lugons.org"
+            "reply": email_settings.EMAIL_SENDER
         })
         return render(request, "lektorganizator/notify_lecturer.html", {"form": form, "slug": slug})
     else:
